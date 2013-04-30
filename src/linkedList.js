@@ -15,10 +15,25 @@ var makeLinkedList = function(){
   newLinkedList.tail = null;
 
   newLinkedList.addToTail = function(value){
+    var oldTail = this.tail;
     this.tail = makeNode(value);
+     if(oldTail !== null) {
+      oldTail.next = this.tail;
+    }
+
+
+    if(this.head === null) {
+    this.head = this.tail;
+    }
+    else if(this.head.next === null){
+      this.head.next = this.tail;
+    }
   };
 
   newLinkedList.removeHead = function(){
+    var temp = this.head.next;
+    delete this.head;
+    this.head = temp;
   };
 
   newLinkedList.contains = function(){

@@ -5,6 +5,8 @@ describe("linkedList", function() {
     linkedList = makeLinkedList();
   });
 
+
+  //**************TAIL TESTS********************
   it("should have a head and tail", function() {
     expect(Object.keys(linkedList)).toContain("head");
     expect(Object.keys(linkedList)).toContain("tail");
@@ -31,5 +33,19 @@ describe("linkedList", function() {
     expect(linkedList.tail.value).toEqual('d');
   });
 
+    //*****************REMOVE FROM HEAD TESTS******************
   // add more tests here to test the functionality of linkedList
+
+
+    it("should return new value of headnode after removing head element from the list", function() {
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    linkedList.addToTail('c');
+    linkedList.addToTail('d');
+    linkedList.removeHead();
+    expect(linkedList.head.value).toEqual('b');
+    expect(linkedList.head.next.value).toEqual('c');
+    expect(linkedList.head.next.next.value).toEqual('d');
+  });
+
 });
