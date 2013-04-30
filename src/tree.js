@@ -1,15 +1,24 @@
 var makeTree = function(){
   var newTree = {};
+  newTree = Object.create(treeMethods);
   newTree.value = undefined;
-  newTree.children = undefined;
-
+  newTree.children = [];
   return newTree;
 };
 
-var treeMethods = {};
+var treeMethods = makeTree.prototype;
 
-treeMethods.addChild = function(){
+treeMethods.addChild = function(value){
+  if(this.value === undefined){
+    this.value = value;
+    return;
+  }
+  var newChildNode= makeTree();
+  newChildNode.value = value;
+  this.children.push(newChildNode);
 };
 
-treeMethods.contains = function(){
+treeMethods.contains = function(value){
+  //return true;
 };
+

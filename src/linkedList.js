@@ -36,7 +36,15 @@ var makeLinkedList = function(){
     this.head = temp;
   };
 
-  newLinkedList.contains = function(){
+  newLinkedList.contains = function(value){
+    var node = this.head;
+    while(node!==null){
+      if(node.value === value){
+        return true;
+      }
+      node = node.next;
+    }
+    return false;
   };
 
   return newLinkedList;

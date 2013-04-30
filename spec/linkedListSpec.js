@@ -48,4 +48,15 @@ describe("linkedList", function() {
     expect(linkedList.head.next.next.value).toEqual('d');
   });
 
+
+//*************CONTAINS TEST*****************************************
+
+    it("should return true if value passed in exists in list", function() {
+    linkedList.addToTail('a');
+    expect(linkedList.contains('a')).toEqual(true);
+    expect(linkedList.contains('b')).toEqual(false);
+    // expect(linkedList.head.next.value).toEqual('c');
+    // expect(linkedList.head.next.next.value).toEqual('d');
+  });
+
 });
