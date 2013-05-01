@@ -59,4 +59,21 @@ describe("linkedList", function() {
     // expect(linkedList.head.next.next.value).toEqual('d');
   });
 
+  //**************TEST ADD TO HEAD*************************
+ it("should correctly add element as head of list", function() {
+    linkedList.addToHead('a');
+    expect(linkedList.head.value).toEqual('a');
+  });
+
+
+
+
+
+
+
+
+
+
+
+
 });

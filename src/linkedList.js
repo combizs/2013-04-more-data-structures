@@ -14,6 +14,10 @@ var makeLinkedList = function(){
   newLinkedList.head = null;
   newLinkedList.tail = null;
 
+
+  newLinkedList.addToHead = function(value){
+  };
+
   newLinkedList.addToTail = function(value){
     var oldTail = this.tail;
     this.tail = makeNode(value);
