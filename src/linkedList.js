@@ -22,6 +22,7 @@ var makeLinkedList = function(){
     this.head = makeNode(value);
     if(oldHead!==null){
       this.head.next = oldHead;
+      oldHead.previous = this.head;
     }
 
     if(this.tail === null){
@@ -35,6 +36,7 @@ var makeLinkedList = function(){
     this.tail = makeNode(value);
      if(oldTail !== null) {
       oldTail.next = this.tail;
+      this.tail.previous = oldTail;
     }
 
 
@@ -70,6 +72,7 @@ var makeNode = function(value){
   var newNode = {};
   newNode.value = value;
   newNode.next = null;
+  newNode.previous = null;
 
   newNode.removeNextNode = function(){
   };

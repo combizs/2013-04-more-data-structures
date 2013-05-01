@@ -33,6 +33,13 @@ describe("linkedList", function() {
     expect(linkedList.tail.value).toEqual('d');
   });
 
+  it("should set previous reference of new tail to old tail", function() {
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    linkedList.addToTail('c');
+    expect(linkedList.tail.previous.value).toEqual('b');
+  });
+
     //*****************REMOVE FROM HEAD TESTS******************
   // add more tests here to test the functionality of linkedList
 
@@ -77,8 +84,19 @@ describe("linkedList", function() {
     expect(linkedList.head.value).toEqual('b');
   });
 
+  it("should correctly create previous refernece of old head to refer to new head", function() {
+    linkedList.addToHead('a');
+    linkedList.addToHead('b');
+    linkedList.addToHead('c');
+    expect(linkedList.head.next.previous.value).toEqual('c');
+  });
 
-
+it("should correctly keep track of previous references for all nodes in list", function() {
+    linkedList.addToHead('a');
+    linkedList.addToHead('b');
+    linkedList.addToHead('c');
+    expect(linkedList.head.next.next.previous.value).toEqual('b');
+  });
 
 
 
