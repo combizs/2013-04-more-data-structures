@@ -13,10 +13,9 @@ describe("tree", function() {
 
     it("should add value to tree", function() {
      tree.addChild('a');
-     expect(tree.value).toEqual('a');
+     expect(tree.children[0].value).toEqual('a');
      tree.addChild('b');
-     tree.addChild('c');
-     expect(tree.children[1].value).toEqual('c');
+     expect(tree.children[1].value).toEqual('b');
   });
 
     it("should add nodes to second layer of tree", function() {
@@ -26,5 +25,23 @@ describe("tree", function() {
      expect(tree.children[0].children[0].value).toEqual('c');
   });
 
-  // Add more tests here to test the functionality of tree.
+  //****************************CONTAINS TESTS**************************
+   it("should return true if passed in value is contained in tree", function() {
+     tree.addChild('a');
+     expect(tree.contains('a')).toBe(true);
+  });
+
+    it("should return true if passed in value is contained in tree", function() {
+     tree.addChild('a');
+     tree.addChild('b');
+     tree.children[0].addChild('c');
+     expect(tree.contains('c')).toBe(true);
+  });
+
+    it("should return true if passed in value is contained in different branch", function() {
+     tree.addChild('a');
+     tree.addChild('b');
+     tree.children[0].addChild('c');
+     expect(tree.contains('b')).toBe(true);
+  });
 });
