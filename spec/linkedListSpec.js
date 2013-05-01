@@ -62,8 +62,24 @@ describe("linkedList", function() {
   //**************TEST ADD TO HEAD*************************
  it("should correctly add element as head of list", function() {
     linkedList.addToHead('a');
-    expect(linkedList.head.value).toEqual('a');
+    linkedList.addToHead('b');
+    expect(linkedList.head.next.value).toEqual('a');
   });
+
+  it("should correctly add element as head of list and correctly set to tail if it was first element added", function() {
+    linkedList.addToHead('a');
+    expect(linkedList.tail.value).toEqual('a');
+  });
+
+  it("should correctly add element as head of list", function() {
+    linkedList.addToHead('a');
+    linkedList.addToHead('b');
+    expect(linkedList.head.value).toEqual('b');
+  });
+
+
+
+
 
 
 
