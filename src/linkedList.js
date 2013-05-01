@@ -54,6 +54,14 @@ var makeLinkedList = function(){
     this.head = temp;
   };
 
+  newLinkedList.removeTail = function(){
+    var newTail = this.tail.previous;
+    if(this.tail !== null) {
+      this.tail = newTail;
+      this.tail.next = null;
+    }
+  };
+
   newLinkedList.contains = function(value){
     var node = this.head;
     while(node!==null){

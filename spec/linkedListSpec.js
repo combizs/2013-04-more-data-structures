@@ -98,6 +98,19 @@ it("should correctly keep track of previous references for all nodes in list", f
     expect(linkedList.head.next.next.previous.value).toEqual('b');
   });
 
+//*****REMOVE TAIL*************
+
+
+
+    it("should return new value of headnode after removing head element from the list", function() {
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    linkedList.removeTail();
+    expect(linkedList.tail.value).toEqual('a');
+    expect(linkedList.tail.next).toEqual(null);
+
+  });
+
 
 
 
