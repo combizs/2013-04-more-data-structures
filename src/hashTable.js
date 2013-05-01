@@ -30,6 +30,9 @@ HashTable.prototype.insert = function(key, value){
 HashTable.prototype.retrieve = function(key){
   var index = getIndexBelowMaxForKey(key, this._limit);
   var array =  this._storage.get(index);
+   if(array=== undefined){
+    return false;
+  }
   for(var i = 0; i < array.length; i++){
 
     if(array[i][0] === key){
@@ -39,7 +42,21 @@ HashTable.prototype.retrieve = function(key){
   return null;
 };
 
-HashTable.prototype.remove = function(){
+HashTable.prototype.remove = function(key){
+  var index = getIndexBelowMaxForKey(key, this._limit);
+  var array =  this._storage.get(index);
+  if(array=== undefined){
+    return false;
+  }
+  for(var i = 0; i < array.length; i++){
+
+    if(array[i][0] === key){
+      array.splice(i);
+      return true;
+    }
+  }
+  return false;
+
 };
 
 // NOTE: For this code to work, you will NEED the code from hashTableHelpers.js
