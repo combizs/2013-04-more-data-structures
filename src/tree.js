@@ -1,13 +1,4 @@
-var makeTree = function(value){
-  var newTree = {};
-  newTree = Object.create(treeMethods);
-  newTree.value = value;
-  newTree.children = [];
-  return newTree;
-};
-
-var treeMethods = makeTree.prototype;
-
+var treeMethods = {};
 treeMethods.addChild = function(value){
   var newChildNode = makeTree(value);
   this.children.push(newChildNode);
@@ -33,5 +24,15 @@ treeMethods.contains = function(value){
 
   return false;
 
+};
+
+
+
+var makeTree = function(value){
+  var newTree = {};
+  newTree.value = value;
+  newTree.children = [];
+  _.extend(newTree, treeMethods);
+  return newTree;
 };
 

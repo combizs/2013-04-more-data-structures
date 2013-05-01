@@ -1,16 +1,20 @@
-var makeSet = function(){
-  var set = Object.create(setPrototype); // fix me
-  set._storage = undefined;
+var MakeSet = function(){
+  var set = Object.create(MakeSet.prototype); // fix me
+  set.storage = {};
   return set;
 };
 
-var setPrototype = {};
-
-setPrototype.add = function(){
+MakeSet.prototype.add = function(value){
+  this.storage[value] = true;
 };
 
-setPrototype.contains = function(){
+MakeSet.prototype.contains = function(value){
+  // if (!this.storage[value]) { return false;}
+  return !!this.storage[value];
 };
 
-setPrototype.remove = function(){
+MakeSet.prototype.remove = function(value){
+  if(this.storage[value]) {
+    delete this.storage[value];
+  }
 };

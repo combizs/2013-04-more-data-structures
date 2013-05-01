@@ -10,10 +10,33 @@ var HashTable = function(){
   this._storage = makeLimitedArray(this._limit);
 };
 
-HashTable.prototype.insert = function(){
+HashTable.prototype.insert = function(key, value){
+  var index = getIndexBelowMaxForKey(key, this._limit);
+    //returns array of whats in the index
+  if(this._storage.get(index)!==undefined){
+  
+    var array = this._storage.get(index);
+    array.push([key, value]);
+    this._storage.set(index, array);
+  }
+  else {
+    //sets array at index if nothing exists
+    var newArray = [];
+    newArray.push([key, value]);
+    this._storage.set(index, newArray);
+  }
 };
 
-HashTable.prototype.retrieve = function(){
+HashTable.prototype.retrieve = function(key){
+  var index = getIndexBelowMaxForKey(key, this._limit);
+  var array =  this._storage.get(index);
+  for(var i = 0; i < array.length; i++){
+
+    if(array[i][0] === key){
+      return array[i][1];
+    }
+  }
+  return null;
 };
 
 HashTable.prototype.remove = function(){
