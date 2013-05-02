@@ -8,36 +8,54 @@ var BinarySearchTree = function(value){
 
 BinarySearchTree.prototype.insert = function(value) {
   if(value <= this.value){
-    this.left = new BinarySearchTree(value);  
+    if(this.left === null) {
+      this.left = new BinarySearchTree(value);
+      return true;
+    }
+    else {
+      this.left.insert(value);
+    }
   }
   else{
-    this.right = new BinarySearchTree(value);
+    if(this.right === null) {
+      this.right = new BinarySearchTree(value);
+      return true;
+    }
+    else {
+      this.right.insert(value);
+    }
   }
-  
 
 };
 
 BinarySearchTree.prototype.contains = function(value){
-  if(this.value === null){
-    return false;
-  }
+ 
   if(this.value === value){
     return true;
   }
-
-   
-  if(this.left.contains(value)){
-    return true;
+  if(this.left!==null){
+    if(this.left.contains(value)){
+      return true;
+    }
   }
-  
-  if(this.right.contains(value)){
-    return true;
-   }
 
+if(this.right!==null){
+    if(this.right.contains(value)){
+      return true;
+    }
+  }
+
+  return false;
 };
 
-BinarySearchTree.prototype.depthFirstLog = function(){
-
+BinarySearchTree.prototype.depthFirstLog = function(callback){
+ callback.call(this, arguments);
+  if(this.right){
+    this.right.depthFirstLog(callback);
+  }
+  if(this.left){
+    this.left.depthFirstLog(callback);
+  }
 };
 
 

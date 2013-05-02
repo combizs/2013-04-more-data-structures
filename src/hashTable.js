@@ -14,7 +14,6 @@ HashTable.prototype.insert = function(key, value){
   var index = getIndexBelowMaxForKey(key, this._limit);
     //returns array of whats in the index
   if(this._storage.get(index)!==undefined){
-  
     var array = this._storage.get(index);
     array.push([key, value]);
     this._storage.set(index, array);
