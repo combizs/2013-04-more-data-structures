@@ -2,6 +2,7 @@ var BinarySearchTree = function(value){
   this.value = value;
   this.right = null;
   this.left = null;
+  var breadth = [];
 
 };
 
@@ -33,13 +34,13 @@ BinarySearchTree.prototype.contains = function(value){
   if(this.value === value){
     return true;
   }
-  if(this.left!==null){
+  if(this.left){
     if(this.left.contains(value)){
       return true;
     }
   }
 
-if(this.right!==null){
+if(this.right){
     if(this.right.contains(value)){
       return true;
     }
@@ -49,12 +50,39 @@ if(this.right!==null){
 };
 
 BinarySearchTree.prototype.depthFirstLog = function(callback){
- callback.call(this, arguments);
+ callback.apply(this);
   if(this.right){
     this.right.depthFirstLog(callback);
   }
   if(this.left){
     this.left.depthFirstLog(callback);
+  }
+};
+
+
+BinarySearchTree.prototype.breadthFirstLog = function(callback, array){
+callback.apply(this, array);
+array = array || [];
+
+ var newitem = '0';
+ alert(array);
+  if(this.left){      //console.log("this: ", this, "val", this.value);
+    array.push(this.left);
+    // this.left.breadthFirstLog(callback);
+  }
+  if(this.right){      //console.log("this: ", this, "val", this.value);
+array.push(this.right);
+    // this.right.breadthFirstLog(callback);
+  }
+  if(array){
+newitem = array[0];
+array.shift();
+console.log(newitem);
+  if(array){
+newitem.breadthFirstLog(callback, array);
+}
+
+
   }
 };
 

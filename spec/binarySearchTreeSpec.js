@@ -43,8 +43,19 @@ describe("binarySearchTree", function() {
       binarySearchTree.insert(5);
       binarySearchTree.insert(10);
       binarySearchTree.depthFirstLog(function(){
-        alert(this.value);
+      //alert(this.value);
       });
     });
 
+    it("breadth nodes", function(){
+      binarySearchTree.insert(3);
+      binarySearchTree.insert(2);
+      binarySearchTree.insert(21);
+      binarySearchTree.insert(1);
+      binarySearchTree.insert(5);
+      binarySearchTree.insert(10);
+      binarySearchTree.breadthFirstLog(function(){
+        console.log(this.value);
+      });
+    });
 });
